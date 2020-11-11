@@ -1,0 +1,50 @@
+﻿Algoritmo Torre Hanoi
+inteiro O, D,T, discos,movimento,i
+Inicio
+    startHanoi();
+Fim
+void startHanoi()
+Inicio
+        Escreva("Digite a quantidade de discos")
+        leia(discos)
+        Se(discos<=0)
+            Escreva("Digite um número maior que zero!")
+            startHanoi()
+        Senão
+        inteiro coluna[discos+1][4]
+        coluna[0][0]=1;
+        coluna[0][1]=2;
+        coluna[0][2]=3;
+        para(i=0;i<discos;i++){
+            coluna[i][0]=i;
+   
+        mover(coluna);
+        hanoi(discos, 1,2,3,coluna);        
+        Fim_Se
+
+
+
+void hanoi(inteiro discos, inteiro O,  inteiro T,inteiro D,inteiro coluna[][])
+    Inicio  
+        Se (discos>0) 
+            hanoi((discos-1), O, D,T,coluna);
+            coluna[discos][(D-1)]=coluna[discos][(O-1)];
+            coluna[discos][(O-1)]=0;
+            mover(coluna);
+            hanoi((discos-1), T, O,D,coluna);    
+        Fim_Se
+Fim
+
+void mover(inteiro coluna[][])
+Inicio
+        Escreva("\n Movimento="+movimento);
+        for( i=1;i<=discos;i++){
+            Escreva("| "+coluna[i][0]+" | "+coluna[i][1]+" | "+coluna[i][2]+" |");  
+        }        
+	  Escreva(" ------------");
+        Escreva("| A | B | C |");
+
+        movimento++;
+        
+Fim
+
